@@ -9,7 +9,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const res = await fetch('http://localhost:3001/current_user', {
+        const res = await fetch(process.env.REACT_APP_CURRENT_USER_URL+'/current_user', {
           credentials: 'include',
         });
         if (res.ok) {
@@ -41,7 +41,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = async () => {
-    await fetch('http://localhost:3001/logout', {
+    await fetch(process.env.REACT_APP_CURRENT_USER_URL+'/logout', {
       method: 'GET',
       credentials: 'include',
     });
