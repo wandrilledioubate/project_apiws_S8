@@ -22,13 +22,10 @@ app.use(session({
   secret: process.env.SECRET_KEY,
   resave: false,
   saveUninitialized: false,
-  proxy: true,
   cookie: {
     secure: true,
     httpOnly: false,
     sameSite: 'none',
-    domain: "https://front-end-zbgxc2hu5q-no.a.run.app",
-    path: '/'
   }
 }));
 
