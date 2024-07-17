@@ -104,34 +104,4 @@ router.get('/logout', (req, res, next) => {
   });
 });
 
-// Route to get current user
-// router.get('/current_user', (req, res) => {
-//   console.log('Cookies: ', req.cookies);
-//   console.log('Session: ', req.session);
-//   console.log('Session: ', req.session.cookie);
-//   if (req.cookies && req.cookies.user) {
-//     const encodedProfile = req.cookies.user;
-//     const decodedProfile = decodeURIComponent(encodedProfile);
-//     try {
-//       const profileObj = JSON.parse(decodedProfile);
-//       console.log('Parsed Profile:', profileObj);
-//       res.json(profileObj);
-//     } catch (error) {
-//       console.error('Error parsing profile:', error);
-//       res.json(null);
-//     }
-//   } else {
-//     console.log('No "user" entry found in req.cookies');
-//     res.json(null);
-//   }
-//   // if (req.user) {
-//   //   console.log('Current user:', req.user);
-
-//   //   res.json(req.user);
-//   // } else {
-//   //   console.log('No user logged in');
-//   //   res.json(null);
-//   // }
-// });
-
 module.exports = router;
