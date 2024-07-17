@@ -10,23 +10,25 @@ const router = require('./Routes/router');
 
 const app = express();
 
-const port = 3001;
+const port = 8080;
+
+app.set("trust proxy", 1);
 
 app.use(express.json());
 
-app.use(cors({
-  origin: process.env.FRONTEND_URL,
-  credentials: true,
-}));
+app.use(cors());
 
 app.use(session({
   secret: process.env.SECRET_KEY,
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false,
+  proxy: true,
   cookie: {
-    secure: false,
+    secure: true,
     httpOnly: false,
-    sameSite: 'lax'
+    sameSite: 'none',
+    domain: "https://front-end-zbgxc2hu5q-no.a.run.app",
+    path: '/'
   }
 }));
 

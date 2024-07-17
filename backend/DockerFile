@@ -16,13 +16,13 @@ COPY . .
 EXPOSE 3001
 
 # Set environment variables
-ENV GOOGLE_CLIENT_ID=3649938618-lif15qu37cggb3li34cupkjnchehqh6s.apps.googleusercontent.com
-ENV GOOGLE_CLIENT_SECRET=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
-ENV MONGO_URI=mongodb+srv://wandrilledioubate:T9cJLCjmnAexcYFw@inventory-app.ca1jaqt.mongodb.net/IMS?retryWrites=true&w=majority&appName=inventory-app
-ENV PORT=3001
-ENV SECRET_KEY=wandrille
-ENV FRONTEND_URL=https://front-end-zbgxc2hu5q-no.a.run.app
-ENV BACKEND_URL=https://back-end-zbgxc2hu5q-no.a.run.app
+ENV GOOGLE_CLIENT_ID=
+ENV GOOGLE_CLIENT_SECRET=
+ENV MONGO_URI=
+ENV PORT=
+ENV SECRET_KEY=
+ENV FRONTEND_URL=
+ENV BACKEND_URL=
 
 # Run the app
 CMD [ "node", "index.js" ]

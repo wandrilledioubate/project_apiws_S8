@@ -90,6 +90,7 @@ router.get('/auth/google/callback',
   function(req, res) {
     console.log('Successful authentication:', req.user);
     res.cookie('user', req.user)
+    console.log("User connected : ", req.user)
     res.redirect(process.env.FRONTEND_URL+`/products`);
   }
 );

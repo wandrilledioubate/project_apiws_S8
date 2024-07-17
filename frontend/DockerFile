@@ -22,7 +22,8 @@ RUN npm install -g serve
 EXPOSE 3000
 
 # Set environment variables
-ENV REACT_APP_BACKEND_URL=https://back-end-zbgxc2hu5q-no.a.run.app
+ENV REACT_APP_BACKEND_URL=
+ENV REACT_APP_FRONTEND_URL=
 
 # Run the app
 CMD [ "serve", "-s", "build" ]

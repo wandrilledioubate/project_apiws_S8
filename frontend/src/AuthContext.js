@@ -51,7 +51,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = async () => {
-    await fetch(`http://localhost:3001/logout`, {
+    await fetch(process.env.REACT_APP_BACKEND_URL+`/logout`, {
       method: 'GET',
       credentials: 'include',
     });
