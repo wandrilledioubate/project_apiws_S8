@@ -19,7 +19,10 @@ RUN npm run build
 RUN npm install -g serve
 
 # Expose the port the app runs on
-EXPOSE 5000
+EXPOSE 3000
+
+# Set environment variables
+ENV REACT_APP_BACKEND_URL=https://back-end-zbgxc2hu5q-no.a.run.app
 
 # Run the app
 CMD [ "serve", "-s", "build" ]

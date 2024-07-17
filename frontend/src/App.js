@@ -22,9 +22,7 @@ function App() {
             <Route
               path="/"
               element={
-                <PrivateRoute>
-                  <Home />
-                </PrivateRoute>
+                <Home />
               }
             />
             <Route
@@ -54,9 +52,7 @@ function App() {
             <Route
               path="/about"
               element={
-                <PrivateRoute>
-                  <About />
-                </PrivateRoute>
+                <About />
               }
             />
           </Routes>

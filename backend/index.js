@@ -9,7 +9,8 @@ const passport = require('./Routes/auth');
 const router = require('./Routes/router');
 
 const app = express();
-const port = process.env.PORT || 3001;
+
+const port = 3001;
 
 app.use(express.json());
 

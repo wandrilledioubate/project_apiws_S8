@@ -2,6 +2,7 @@ import React, { createContext, useState, useEffect } from 'react';
 
 export const AuthContext = createContext();
 
+
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(null);
   const [user, setUser] = useState(null);
@@ -9,23 +10,32 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const res = await fetch(process.env.REACT_APP_CURRENT_USER_URL+'/current_user', {
-          credentials: 'include',
-        });
-        if (res.ok) {
-          const data = await res.json();
-          console.log('User data:', data); // Log the user data
-          if (data) {
-            setIsAuthenticated(true);
-            setUser(data);
-          } else {
-            setIsAuthenticated(false);
-            setUser(null);
-          }
+        let user = document.cookie.replace(/(?:(?:^|.*;\s*)user\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+        if (user != null) {
+          const decodedProfile = decodeURIComponent(user);
+          const jsonString = JSON.stringify(decodedProfile);
+          const trimmedString = '"' + jsonString.slice(3).slice(0, -1) +  '"';;        
+          const parsedObject = JSON.parse(trimmedString);
+          const profile = JSON.parse(parsedObject)
+          console.log(profile)
+          console.log(profile.displayName)
+          setIsAuthenticated(true);
+          setUser(profile);
         } else {
           setIsAuthenticated(false);
           setUser(null);
         }
+
+        const decodedProfile = decodeURIComponent(user);
+        const jsonString = JSON.stringify(decodedProfile);
+        const trimmedString = '"' + jsonString.slice(3).slice(0, -1) +  '"';;        
+        const parsedObject = JSON.parse(trimmedString);
+        const profile = JSON.parse(parsedObject)
+        console.log(profile)
+        console.log(profile.displayName)
+        setIsAuthenticated(true);
+        setUser(profile)
+
       } catch (error) {
         console.error('Error checking authentication', error);
         setIsAuthenticated(false);
@@ -41,7 +51,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = async () => {
-    await fetch(process.env.REACT_APP_CURRENT_USER_URL+'/logout', {
+    await fetch(`http://localhost:3001/logout`, {
       method: 'GET',
       credentials: 'include',
     });
